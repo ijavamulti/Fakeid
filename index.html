@@ -1,0 +1,73 @@
+لتطوير موقع ينشئ هوية وهمية تتضمن اسمًا عشوائيًا وعنوانًا ودولة ورمزًا بريديًا ورقم هاتف وبريدًا إلكترونيًا عشوائيًا، تحتاج لاستخدام لغات البرمجة مثل HTML, CSS, وJavaScript. يمكنك أيضًا استخدام بعض مكتبات JavaScript مثل `Faker.js` لتوليد البيانات العشوائية.
+
+سأقدم لك مثالًا بسيطًا يوضح كيفية بناء هذا الملف. 
+
+### هيكل الملف الكامل
+
+**index.html**
+```html
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مولد هوية وهمية</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .identity {
+        margin-bottom: 20px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h1>مولد هوية وهمية</h1>
+<div class="identity" id="identity">
+    <p id="name">الاسم: </p>
+    <p id="address">العنوان: </p>
+    <p id="country">الدولة: </p>
+    <p id="zipcode">الرمز البريدي: </p>
+    <p id="phone">رقم الهاتف: </p>
+    <p id="email">البريد الإلكتروني: </p>
+</div>
+<button onclick="generateIdentity()">توليد هوية جديدة</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@faker-js/faker@7.6.0/dist/cjs/index.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
+```
+
+**script.js**
+```javascript
+// قم بتعديل هذا القسم ليتوافق مع مكتبة Faker.js
+const { faker } = window.require("@faker-js/faker");
+
+function generateIdentity() {
+    const name = faker.name.fullName();
+    const address = faker.address.streetAddress();
+    const country = faker.address.country();
+    const zipcode = faker.address.zipCode();
+    const phone = faker.phone.number();
+    const email = faker.internet.email();
+
+    document.getElementById('name').innerText = `الاسم: ${name}`;
+    document.getElementById('address').innerText = `العنوان: ${address}`;
+    document.getElementById('country').innerText = `الدولة: ${country}`;
+    document.getElementById('zipcode').innerText = `الرمز البريدي: ${zipcode}`;
+    document.getElementById('phone').innerText = `رقم الهاتف: ${phone}`;
+    document.getElementById('email').innerText = `البريد الإلكتروني: ${email}`;
+}
+```
+
+
+
